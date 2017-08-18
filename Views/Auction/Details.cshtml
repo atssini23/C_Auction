@@ -1,0 +1,32 @@
+
+<h2>@ViewBag.Auction.ProductName</h2> 
+<a href='/auctions'>Auctions</a> | <a href="/logout">Logout</a>
+<div class='col-md-8'>  
+    <h4>Created by: @ViewBag.Auction.User.FirstName</h4>
+    <br>
+
+    @{
+        TimeSpan span = @ViewBag.Auction.EndDate.Subtract(DateTime.Now);
+    }
+        <h5>Time Remaining: @ViewBag.Time days</h5>
+        <br>
+
+        <p>@ViewBag.Auction.Description</p>
+        <p>Initial Asking Price: $@ViewBag.Auction.StartingBid</p>
+        <br>
+
+    @if (@ViewBag.Winner != null)
+    {
+
+        <p><h5>Current Highest Bid: </h5> $@ViewBag.Winner.Amount
+        <h5>By:</h5>  @ViewBag.Winner.User.FirstName</p> 
+    }
+    <br>
+
+    <form Asp-Controller="Auction" asp-action="Buy" method='post'class="form-inline">
+        <input value="@ViewBag.Auction.AuctionId" type='hidden' name="AuctionId"  >
+        <label for="makebid">Bid Amount: </label>
+        <input type='number'  min="@ViewBag.Auction.StartingBid" name="makebid" class="form-control" max="@ViewBag.User.Wallet" value="make a bid">
+        <button type='submit' class='btn btn-primary btn-sm' >Bid!!</button>
+    </form> 
+</div>

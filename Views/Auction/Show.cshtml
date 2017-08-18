@@ -1,0 +1,52 @@
+<h3>Current Auction</h3>
+
+<h4>Hi @ViewBag.UserName!</h4> <a href="/logout">Logout</a>
+
+<div class='col-md-10'>  
+    <table class='table table-striped'>
+        <thead>
+            <tr>
+            <th>Product</th>
+            <th>Seller</th>
+            <th>Top Bid</th>
+            <th>Time Remaining</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var auction in @ViewBag.auction)
+            {
+                <tr>
+                <td><a href="auction/@auction.AuctionId">@auction.ProductName</a></td>
+                <td>@auction.User.FirstName</td>
+                <td>$@auction.HighestBid</td>
+                @{
+                    TimeSpan time = @auction.EndDate.Subtract(DateTime.Now);
+
+                    String Time = new DateTime(time.Ticks).ToString("dd");
+                    
+                    
+
+                }
+
+                <td>@Time days</td>
+                <td>
+                    @if (@ViewBag.UserId == @auction.User.UserId)
+                    {
+                        <form asp-controller="Auction" asp-action="DeleteAuction" method='post'>
+                            <input type='hidden' name="AuctionId" value="@auction.AuctionId">
+                            <button type='submit' class='btn btn-primary'>Delete</button>
+                        </form>
+                    }
+                </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+      
+    <div class = "col-md-10">
+     <a href="/create" class='btn btn-primary'>New Auction</a>
+    </div>
+    
+    <p><h4>Current wallet:</h4> $ @ViewBag.User.Wallet</p>
+ </div> 
