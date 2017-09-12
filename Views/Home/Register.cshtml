@@ -29,27 +29,27 @@
         <div>
             <label asp-for="UserName">User Name</label><br> 
             <input asp-for="UserName" class="form-control"/>
-            <span asp-validation-for="UserName"></span>
+            <span asp-validation-for="UserName" class ="text-danger"></span>
         </div>
         <div>
             <label asp-for="FirstName">First Name </label><br> 
-            <input asp-for="FirstName" class="form-control"/>
-            <span asp-validation-for="LastName"></span>
+            <input asp-for="FirstName" class="form-control"/><br>
+            <span asp-validation-for="LastName" class ="text-danger"></span>
         </div>
         <div>
             <label asp-for="LastName">Last Name </label><br> 
-            <input asp-for="LastName" class="form-control"/>
-            <span asp-validation-for="LastName"></span>
+            <input asp-for="LastName" class="form-control"/><br>
+            <span asp-validation-for="LastName" class ="text-danger"></span>
         </div>
         <div>
             <label asp-for="Password">Password</label><br> 
-            <input asp-for="Password" class="form-control"/>
-            <span asp-validation-for="Password"></span>
+            <input asp-for="Password" class="form-control"/><br>
+            <span asp-validation-for="Password" class ="text-danger"></span>
         </div>
         <div>
             <label asp-for="PasswordConfirmation">Password Confirmation</label><br> 
-            <input asp-for="PasswordConfirmation" type='password' class="form-control">
-            <span asp-validation-for="PasswordConfirmation"></span>
+            <input asp-for="PasswordConfirmation" type='password' class="form-control"><br>
+            <span asp-validation-for="PasswordConfirmation" class ="text-danger"></span>
         </div>
         <br>
         <button class="btn btn-primary " type='submit'>Create a User</button>
